@@ -3,14 +3,21 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useReadingProgress } from '@/contexts/ReadingProgressContext';
 import ReactMarkdown from 'react-markdown';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { AspectRatio } from './ui/aspect-ratio';
 
 interface ArticleContentProps {
   articleId: string;
   content: string;
+  imageUrl?: string;
   translations?: Record<string, string>;
 }
 
-const ArticleContent: React.FC<ArticleContentProps> = ({ articleId, content, translations }) => {
+const ArticleContent: React.FC<ArticleContentProps> = ({ 
+  articleId, 
+  content, 
+  imageUrl,
+  translations 
+}) => {
   const { saveProgress } = useReadingProgress();
   const { currentLanguage } = useLanguage();
   const articleRef = useRef<HTMLDivElement>(null);
@@ -57,6 +64,17 @@ const ArticleContent: React.FC<ArticleContentProps> = ({ articleId, content, tra
   
   return (
     <div ref={articleRef} className="prose prose-lg max-w-none">
+      {imageUrl && (
+        <div className="mb-8">
+          <AspectRatio ratio={16/9} className="rounded-lg overflow-hidden">
+            <img 
+              src={imageUrl} 
+              alt="Article feature" 
+              className="object-cover w-full h-full"
+            />
+          </AspectRatio>
+        </div>
+      )}
       <div className="space-y-6 leading-relaxed">
         <ReactMarkdown>
           {getLocalizedContent()}

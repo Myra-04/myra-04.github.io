@@ -83,20 +83,13 @@ const ArticlePage: React.FC = () => {
               <span>{article.estimatedReadingTime} min read</span>
             </div>
           </div>
-          
-          <div className="relative h-64 md:h-96 rounded-lg overflow-hidden">
-            <img 
-              src={article.imageUrl} 
-              alt={getLocalizedTitle()} 
-              className="object-cover w-full h-full"
-            />
-          </div>
         </header>
         
         {/* Article content */}
         <ArticleContent 
           articleId={article.id} 
           content={article.content}
+          imageUrl={article.imageUrl}
           translations={article.translations}
         />
         
