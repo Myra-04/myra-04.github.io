@@ -65,8 +65,8 @@ const ArticleContent: React.FC<ArticleContentProps> = ({
   return (
     <div ref={articleRef} className="prose prose-lg max-w-none">
       {imageUrl && (
-        <div className="mb-8">
-          <AspectRatio ratio={16/9} className="rounded-lg overflow-hidden">
+        <div className="mb-8 w-full">
+          <AspectRatio ratio={16/9} className="bg-gray-100 rounded-lg overflow-hidden">
             <img 
               src={imageUrl} 
               alt="Article feature" 
@@ -76,9 +76,11 @@ const ArticleContent: React.FC<ArticleContentProps> = ({
         </div>
       )}
       <div className="space-y-6 leading-relaxed">
-        <ReactMarkdown>
-          {getLocalizedContent()}
-        </ReactMarkdown>
+        <div>
+          <ReactMarkdown>
+            {getLocalizedContent()}
+          </ReactMarkdown>
+        </div>
       </div>
     </div>
   );

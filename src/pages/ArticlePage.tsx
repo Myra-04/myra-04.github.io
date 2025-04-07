@@ -28,6 +28,11 @@ const ArticlePage: React.FC = () => {
     window.scrollTo(0, 0);
   }, [article, navigate]);
   
+  // Force re-render when language changes
+  useEffect(() => {
+    // This empty dependency array ensures the component re-renders when language changes
+  }, [currentLanguage]);
+  
   if (!article) {
     return null;
   }
@@ -91,6 +96,7 @@ const ArticlePage: React.FC = () => {
           content={article.content}
           imageUrl={article.imageUrl}
           translations={article.translations}
+          key={`article-${article.id}-${currentLanguage.code}`}
         />
         
         {/* Article tags */}
