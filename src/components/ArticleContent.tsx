@@ -57,9 +57,11 @@ const ArticleContent: React.FC<ArticleContentProps> = ({ articleId, content, tra
   
   return (
     <div ref={articleRef} className="prose prose-lg max-w-none">
-      <ReactMarkdown className="space-y-6 leading-relaxed">
-        {getLocalizedContent()}
-      </ReactMarkdown>
+      <div className="space-y-6 leading-relaxed">
+        <ReactMarkdown>
+          {getLocalizedContent()}
+        </ReactMarkdown>
+      </div>
     </div>
   );
 };
