@@ -22,28 +22,29 @@ export const ReadingProgressProvider: React.FC<{ children: React.ReactNode }> = 
   
   // Load reading progress from localStorage when the component mounts or user changes
   useEffect(() => {
-    if (user) {
-      const storedProgress = localStorage.getItem(`sarawak-reading-progress-${user.id}`);
+    try {
+      const storageKey = user ? `sarawak-reading-progress-${user.id}` : 'sarawak-guest-reading-progress';
+      const storedProgress = localStorage.getItem(storageKey);
+      
       if (storedProgress) {
         setReadingProgress(JSON.parse(storedProgress));
+        console.log('Loading reading progress from localStorage');
       }
-    } else {
-      // For non-logged in users, use a generic storage key
-      const guestProgress = localStorage.getItem('sarawak-guest-reading-progress');
-      if (guestProgress) {
-        setReadingProgress(JSON.parse(guestProgress));
-      }
+    } catch (error) {
+      console.error('Error loading reading progress:', error);
     }
   }, [user]);
 
   // Save reading progress to localStorage whenever it changes
   useEffect(() => {
-    if (readingProgress.length > 0) {
-      if (user) {
-        localStorage.setItem(`sarawak-reading-progress-${user.id}`, JSON.stringify(readingProgress));
-      } else {
-        localStorage.setItem('sarawak-guest-reading-progress', JSON.stringify(readingProgress));
+    try {
+      if (readingProgress.length > 0) {
+        const storageKey = user ? `sarawak-reading-progress-${user.id}` : 'sarawak-guest-reading-progress';
+        localStorage.setItem(storageKey, JSON.stringify(readingProgress));
+        console.log('Saving reading progress to localStorage');
       }
+    } catch (error) {
+      console.error('Error saving reading progress:', error);
     }
   }, [readingProgress, user]);
 
@@ -55,7 +56,15 @@ export const ReadingProgressProvider: React.FC<{ children: React.ReactNode }> = 
   const saveProgress = (articleId: string, progress: number): void => {
     setReadingProgress(prev => {
       const existingIndex = prev.findIndex(item => item.articleId === articleId);
+      
+      // Only update if progress is higher than existing progress
       if (existingIndex !== -1) {
+        const existingProgress = prev[existingIndex].progress;
+        
+        if (progress <= existingProgress) {
+          return prev; // Don't update if new progress is lower
+        }
+        
         const updated = [...prev];
         updated[existingIndex] = { 
           articleId, 

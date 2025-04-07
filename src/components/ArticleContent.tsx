@@ -24,16 +24,20 @@ const ArticleContent: React.FC<ArticleContentProps> = ({ articleId, content }) =
           let progress = (windowScrollTop / totalHeight) * 100;
           progress = Math.min(100, Math.max(0, progress));
           
-          // Only save progress if it's increased by at least 5%
-          if (progress > lastSavedProgress + 5 || progress >= 90) {
+          // Only save progress if it's increased by at least 2% or reached 100%
+          if (progress > lastSavedProgress + 2 || progress >= 95) {
             saveProgress(articleId, progress);
             setLastSavedProgress(progress);
+            console.log(`Progress saved: ${progress.toFixed(2)}% for article ${articleId}`);
           }
         }
       }
     };
     
     window.addEventListener('scroll', calculateReadingProgress);
+    
+    // Initial calculation when component mounts
+    setTimeout(calculateReadingProgress, 500);
     
     return () => {
       window.removeEventListener('scroll', calculateReadingProgress);

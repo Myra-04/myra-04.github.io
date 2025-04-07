@@ -95,7 +95,7 @@ export default {
         'fade-in': 'fadeIn 0.5s ease-out forwards',
       },
       backgroundImage: {
-        'pua-pattern': "url('/src/assets/pua-pattern.png')",
+        'pua-pattern': "url('./src/assets/pua-pattern.png')",
       },
     }
   },
