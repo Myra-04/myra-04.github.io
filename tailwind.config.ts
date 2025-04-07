@@ -70,6 +70,52 @@ export default {
           cream: '#F5F2E9',
         }
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: '100%',
+            color: 'inherit',
+            a: {
+              color: '#8C1D18',
+              '&:hover': {
+                color: '#235E3D',
+              },
+            },
+            h1: {
+              marginTop: '2rem',
+              marginBottom: '1rem',
+              lineHeight: '1.3',
+            },
+            h2: {
+              marginTop: '2.5rem',
+              marginBottom: '0.75rem',
+              lineHeight: '1.3',
+            },
+            h3: {
+              marginTop: '2rem',
+              marginBottom: '0.75rem',
+              lineHeight: '1.3',
+            },
+            p: {
+              marginTop: '1.25rem',
+              marginBottom: '1.25rem',
+              lineHeight: '1.7',
+            },
+            li: {
+              marginBottom: '0.75rem',
+              lineHeight: '1.7',
+            },
+            ul: {
+              marginTop: '1.25rem',
+              marginBottom: '1.25rem',
+            },
+            blockquote: {
+              fontStyle: 'italic',
+              borderLeftColor: '#F4B942',
+            },
+          },
+        },
+      },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
@@ -99,5 +145,8 @@ export default {
       },
     }
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require('@tailwindcss/typography'),
+  ],
 } satisfies Config;

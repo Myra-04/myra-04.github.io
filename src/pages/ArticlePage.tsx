@@ -15,6 +15,7 @@ const ArticlePage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { getProgress } = useReadingProgress();
+  const { currentLanguage } = useLanguage();
   
   const article = id ? getArticleById(id) : undefined;
   const relatedArticles = article ? getRelatedArticles(article, 3) : [];
@@ -30,6 +31,22 @@ const ArticlePage: React.FC = () => {
   if (!article) {
     return null;
   }
+
+  // Get localized title if available
+  const getLocalizedTitle = () => {
+    if (article.titleTranslations && article.titleTranslations[currentLanguage.code]) {
+      return article.titleTranslations[currentLanguage.code];
+    }
+    return article.title;
+  };
+  
+  // Get localized description if available
+  const getLocalizedDescription = () => {
+    if (article.descriptionTranslations && article.descriptionTranslations[currentLanguage.code]) {
+      return article.descriptionTranslations[currentLanguage.code];
+    }
+    return article.shortDescription;
+  };
   
   return (
     <Layout>
@@ -49,7 +66,7 @@ const ArticlePage: React.FC = () => {
         {/* Article header */}
         <header className="mb-8">
           <h1 className="text-3xl md:text-4xl font-bold text-sarawak-brown mb-4">
-            {article.title}
+            {getLocalizedTitle()}
           </h1>
           
           <div className="flex flex-wrap items-center text-sm text-gray-600 gap-4 mb-6">
@@ -70,14 +87,18 @@ const ArticlePage: React.FC = () => {
           <div className="relative h-64 md:h-96 rounded-lg overflow-hidden">
             <img 
               src={article.imageUrl} 
-              alt={article.title} 
+              alt={getLocalizedTitle()} 
               className="object-cover w-full h-full"
             />
           </div>
         </header>
         
         {/* Article content */}
-        <ArticleContent articleId={article.id} content={article.content} />
+        <ArticleContent 
+          articleId={article.id} 
+          content={article.content}
+          translations={article.translations}
+        />
         
         {/* Article tags */}
         <div className="mt-8 flex flex-wrap gap-2">

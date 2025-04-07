@@ -4,6 +4,15 @@ export interface Article {
   title: string;
   shortDescription: string;
   content: string;
+  translations?: {
+    [langCode: string]: string; // Content translations for different languages
+  };
+  titleTranslations?: {
+    [langCode: string]: string; // Title translations for different languages
+  };
+  descriptionTranslations?: {
+    [langCode: string]: string; // Short description translations
+  };
   imageUrl: string;
   author: string;
   publishDate: string;
@@ -74,6 +83,39 @@ Visitors to Sarawak can experience the beauty of pua kumbu in various ways:
 
 Through these experiences, one can gain a deeper appreciation of not just the aesthetic beauty but the cultural depth and spiritual significance of these remarkable textiles.
     `,
+    titleTranslations: {
+      ms: 'Warisan Kaya Tekstil Tradisional Iban',
+      ib: 'Penemu Pemasa Iban ti Besai',
+    },
+    translations: {
+      ms: `
+# Warisan Kaya Tekstil Tradisional Iban
+
+Orang Iban, salah satu kumpulan pribumi terbesar di Sarawak, terkenal dengan tekstil tradisional yang indah, terutamanya pua kumbu. Kain tenunan tangan ini bukan sekadar hiasan tetapi merupakan khazanah pengetahuan budaya, kepercayaan spiritual, dan ekspresi seni.
+
+## Seni Pua Kumbu
+
+Pua kumbu, yang bermaksud "selimut" dalam bahasa Iban, adalah tekstil tenunan tradisional yang dihasilkan oleh wanita Iban. Proses pembuatan pua kumbu memerlukan kerja keras dan kemahiran yang luar biasa. Sebelum tenunan dimulakan, benang kapas disediakan melalui beberapa proses termasuk pemintalan, mordanting, dan pewarnaan.
+
+Proses pewarnaan menggunakan bahan semula jadi yang terdapat di hutan hujan, seperti:
+- Akar engkudu (Morinda citrifolia) untuk warna merah
+- Daun tarum (Indigofera) untuk warna biru
+- Pelbagai kulit kayu dan daun untuk warna coklat dan hitam
+
+Pewarna semula jadi ini disediakan mengikut resepi kuno yang diwariskan turun-temurun oleh penenun.
+
+## Corak dan Motif Simbolik
+
+Corak yang ditenun ke dalam pua kumbu bukan sekadar hiasan tetapi sangat simbolik. Motif tradisional sering menggambarkan:
+
+1. **Makhluk mitos** seperti naga yang melambangkan kuasa supernatural
+2. **Flora dan fauna** dari hutan hujan Borneo
+3. **Simbol kosmos** yang mewakili alam semesta spiritual
+4. **Figur manusia** yang menggambarkan nenek moyang atau wira budaya
+
+Setiap corak mempunyai nama dan makna tersendiri, dan penenun mahir secara tradisional dipercayai menerima reka bentuk ini dalam mimpi atau penglihatan.
+    `
+    },
     imageUrl: 'https://images.unsplash.com/photo-1585222515218-d2c9f8328bf6?q=80&w=2864&auto=format&fit=crop',
     author: 'Dr. Maria Langub',
     publishDate: '2023-05-15',
@@ -153,6 +195,90 @@ As with many traditional foods, there are concerns about preserving the authenti
 
 Whether you're a food enthusiast or simply a curious traveler, experiencing Sarawak Laksa offers a delicious gateway into understanding the diverse cultural tapestry of Sarawak.
     `,
+    titleTranslations: {
+      ms: 'Laksa Sarawak: Perjalanan Kulinari',
+      ib: 'Laksa Sarawak: Jalai Pengeman Ti Manah',
+    },
+    translations: {
+      ms: `
+# Laksa Sarawak: Perjalanan Kulinari
+
+Laksa Sarawak tanpa ragu adalah salah satu hidangan paling digemari yang muncul dari Borneo Malaysia. Hidangan ikonik ini mewakili perpaduan yang indah antara pengaruh Cina, Melayu, dan pribumi, menciptakan profil rasa yang khas Sarawak.
+
+## Asal Usul dan Sejarah
+
+Asal usul Laksa Sarawak agak diperdebatkan, tetapi kebanyakan ahli sejarah kulinari bersetuju bahawa ia berkembang pada pertengahan abad ke-20. Satu kisah popular menisbahkan penciptaannya kepada seorang pendatang Cina bernama Goh Lik Teck, yang mengembangkan resipi selepas Perang Dunia Kedua. Menggabungkan teknik memasak Cina dengan bahan dan perasa tempatan, beliau mencipta apa yang akan dikenali sebagai Laksa Sarawak.
+
+Tidak seperti Laksa lain di Semenanjung Malaysia (seperti Laksa Penang atau Laksa Kari), Laksa Sarawak mempunyai ciri khasnya sendiri—tidak semata-mata berasaskan kari mahupun didominasi oleh ikan, tetapi lebih kepada gabungan harmoni rempah dan herba.
+
+## Pes Ajaib
+
+Di jantung Laksa Sarawak adalah pes rempahnya yang kompleks (rempah), yang biasanya termasuk:
+
+- Cili kering
+- Lengkuas
+- Serai
+- Bawang merah
+- Bawang putih
+- Buah keras
+- Biji ketumbar
+- Jintan
+- Lada hitam
+- Belacan
+
+Bahan-bahan ini dikisar menjadi pes halus, kemudian ditumis dalam minyak sehingga wangi sebelum dimasak dengan stok ayam dan santan untuk membuat kuah asas.
+
+## Mangkuk Sempurna
+
+Semangkuk Laksa Sarawak tradisional terdiri daripada:
+
+1. **Kuah**: Sup yang kaya dan beraroma dengan rasa yang seimbang iaitu pedas, sedap, dan sedikit masam
+2. **Bihun**: Mi beras nipis yang dicelur dan diletakkan di bahagian bawah mangkuk
+3. **Protein**: Ayam yang disoyat dan udang yang dikupas
+4. **Hiasan**: Taugeh, telur dadar disiat, daun ketumbar segar, limau nipis, dan sambal belacan
+
+Komposisi ini menciptakan simfoni tekstur dan rasa—mi yang lembut, protein yang empuk, taugeh yang rangup, semuanya dimandikan dalam kuah beraroma yang khas.
+    `,
+      ib: `
+# Laksa Sarawak: Jalai Pengeman Ti Manah
+
+Laksa Sarawak nya sigi pemakanan ti manah ari Borneo Malaysia. Ia sigi pemakanan ti beguna ari Cina, Melayu, enggau bansa bukai, ke ngadaka asa ti bisi dalam Sarawak aja.
+
+## Pun Enggau Pengawa Dulu
+
+Pasal pun laksa Sarawak nya bisi beratika, tang pemakai ke pengemu bepanggai peninggi nya ngembuan taun 1950an. Kelimpah nya bejalai pekara Cina ti benama Goh Lik Teck, ti simbun pemakai nya kelari Perang Dunya Kedua. Ia nyampor jalai masak Cina enggau pemakai ari menua tu, nya ti manah meh laksa Sarawak.
+
+Enda baka laksa di Semenanjung Malaysia (baka Laksa Penang atau Laksa Kari), laksa Sarawak bisi jalai diri—enda semina ari kari tauka bisi ikan, tang ia nya sanggup ari rempah ti beguna.
+
+## Pemakai Ti Manah
+
+Di Dalam laksa Sarawak bisi rempah ti manah (rempah), ti bisi:
+
+- Cili kering
+- Lengkuas
+- Serai
+- Bawang merah
+- Bawang putih
+- Buah keras
+- Biji ketumbar
+- Jintan
+- Lada hitam
+- Belacan
+
+Pemakai tu ditunu dalam minyak nyangkak melah dia nya masak begulai kuah ayam enggau santan kena ngaga ai nya.
+
+## Laksa Ti Manah
+
+Laksa Sarawak ti bansa dulu:
+
+1. **Kuah**: Sup ti manah enggau asa ti teguh pedas, sedap, enggu mit masam
+2. **Bihun**: Bihun mit ti ditunu lalu dibai ba piga
+3. **Daging**: Ayam enggau udang ti dikupas
+4. **Ulih**: Taugeh, telur dadar, daun ketumbar, limau nipis, enggau sambal belacan
+
+Pemakanan tu meri jalai asa—bihun mit, daging ti manah, taugeh ti rangup, semua nya begulai dalam ai ti manah.
+    `
+    },
     imageUrl: 'https://images.unsplash.com/photo-1583077874340-79db6564698e?q=80&w=2223&auto=format&fit=crop',
     author: 'Chef Wong Mei Ling',
     publishDate: '2023-07-22',

@@ -2,16 +2,27 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useReadingProgress } from '@/contexts/ReadingProgressContext';
 import ReactMarkdown from 'react-markdown';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface ArticleContentProps {
   articleId: string;
   content: string;
+  translations?: Record<string, string>;
 }
 
-const ArticleContent: React.FC<ArticleContentProps> = ({ articleId, content }) => {
+const ArticleContent: React.FC<ArticleContentProps> = ({ articleId, content, translations }) => {
   const { saveProgress } = useReadingProgress();
+  const { currentLanguage } = useLanguage();
   const articleRef = useRef<HTMLDivElement>(null);
   const [lastSavedProgress, setLastSavedProgress] = useState(0);
+  
+  // Get content in the current language if available, otherwise use default content
+  const getLocalizedContent = () => {
+    if (translations && translations[currentLanguage.code]) {
+      return translations[currentLanguage.code];
+    }
+    return content;
+  };
   
   useEffect(() => {
     const calculateReadingProgress = () => {
@@ -46,8 +57,8 @@ const ArticleContent: React.FC<ArticleContentProps> = ({ articleId, content }) =
   
   return (
     <div ref={articleRef} className="prose prose-lg max-w-none">
-      <ReactMarkdown>
-        {content}
+      <ReactMarkdown className="space-y-6 leading-relaxed">
+        {getLocalizedContent()}
       </ReactMarkdown>
     </div>
   );
