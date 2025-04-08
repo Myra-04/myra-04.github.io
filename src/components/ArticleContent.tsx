@@ -9,7 +9,7 @@ interface ArticleContentProps {
   articleId: string;
   content: string;
   imageUrl?: string;
-  translations?: Record<string, string>;
+  translations?: Record<string, string | { title: string; shortDescription: string; content: string }>;
 }
 
 const ArticleContent: React.FC<ArticleContentProps> = ({ 
@@ -22,11 +22,16 @@ const ArticleContent: React.FC<ArticleContentProps> = ({
   const { currentLanguage } = useLanguage();
   const articleRef = useRef<HTMLDivElement>(null);
   const [lastSavedProgress, setLastSavedProgress] = useState(0);
+  const [imageError, setImageError] = useState(false);
   
   // Get content in the current language if available, otherwise use default content
   const getLocalizedContent = () => {
     if (translations && translations[currentLanguage.code]) {
-      return translations[currentLanguage.code];
+      if (typeof translations[currentLanguage.code] === 'string') {
+        return translations[currentLanguage.code] as string;
+      } else if (typeof translations[currentLanguage.code] === 'object') {
+        return (translations[currentLanguage.code] as any).content || content;
+      }
     }
     return content;
   };
@@ -62,15 +67,24 @@ const ArticleContent: React.FC<ArticleContentProps> = ({
     };
   }, [articleId, saveProgress, lastSavedProgress]);
   
+  // Get fallback image if the primary one fails
+  const getFallbackImage = () => {
+    return "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?q=80&w=1280";
+  };
+  
   return (
     <div ref={articleRef} className="prose prose-lg max-w-none">
       {imageUrl && (
         <div className="mb-8 w-full">
           <AspectRatio ratio={16/9} className="bg-gray-100 rounded-lg overflow-hidden">
             <img 
-              src={imageUrl} 
+              src={imageError ? getFallbackImage() : imageUrl} 
               alt="Article feature" 
               className="object-cover w-full h-full"
+              onError={(e) => {
+                console.error("Image failed to load:", imageUrl);
+                setImageError(true);
+              }}
             />
           </AspectRatio>
         </div>

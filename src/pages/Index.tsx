@@ -10,8 +10,13 @@ import ArticleCard from '@/components/ArticleCard';
 import { articles } from '@/data/articles';
 
 const Index: React.FC = () => {
-  const { translations } = useLanguage();
+  const { translations, currentLanguage } = useLanguage();
   const featuredArticles = articles.slice(0, 3);
+  
+  // Translation helpers for the page content
+  const translate = (key: string, fallback: string) => {
+    return translations[key] || fallback;
+  };
   
   return (
     <Layout>
@@ -52,9 +57,11 @@ const Index: React.FC = () => {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center mb-8">
-            <h2 className="text-3xl font-bold text-sarawak-brown">Featured Articles</h2>
+            <h2 className="text-3xl font-bold text-sarawak-brown">
+              {translate('featuredArticles', 'Featured Articles')}
+            </h2>
             <Link to="/articles" className="text-sarawak-red hover:underline">
-              View all articles
+              {translate('viewAllArticles', 'View all articles')}
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -69,7 +76,7 @@ const Index: React.FC = () => {
       <section className="py-16 bg-sarawak-cream/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-sarawak-brown mb-8 text-center">
-            Explore Sarawak's Heritage
+            {translate('exploreSarawak', 'Explore Sarawak\'s Heritage')}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <Card className="overflow-hidden hover:shadow-lg transition-shadow">
@@ -78,14 +85,22 @@ const Index: React.FC = () => {
                   src="https://images.unsplash.com/photo-1628744448840-bedc0f9e0944?q=80&w=2070&auto=format&fit=crop"
                   alt="Traditional textiles"
                   className="object-cover w-full h-full"
+                  onError={(e) => {
+                    console.error("Image failed to load");
+                    e.currentTarget.src = "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?q=80&w=1280";
+                  }}
                 />
               </div>
               <CardContent className="p-6">
-                <h3 className="text-xl font-semibold mb-2 text-sarawak-brown">Traditional Textiles</h3>
-                <p className="text-gray-600 mb-4">Discover the intricate patterns and rich history behind Sarawak's textile traditions.</p>
+                <h3 className="text-xl font-semibold mb-2 text-sarawak-brown">
+                  {translate('traditionalTextiles', 'Traditional Textiles')}
+                </h3>
+                <p className="text-gray-600 mb-4">
+                  {translate('textilesDescription', 'Discover the intricate patterns and rich history behind Sarawak\'s textile traditions.')}
+                </p>
                 <Link to="/articles">
                   <Button variant="outline" className="text-sarawak-red border-sarawak-red hover:bg-sarawak-red/10">
-                    Explore
+                    {translate('explore', 'Explore')}
                   </Button>
                 </Link>
               </CardContent>
@@ -97,14 +112,22 @@ const Index: React.FC = () => {
                   src="https://images.unsplash.com/photo-1583077874340-79db6564698e?q=80&w=2223&auto=format&fit=crop"
                   alt="Culinary Traditions"
                   className="object-cover w-full h-full"
+                  onError={(e) => {
+                    console.error("Image failed to load");
+                    e.currentTarget.src = "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?q=80&w=1280";
+                  }}
                 />
               </div>
               <CardContent className="p-6">
-                <h3 className="text-xl font-semibold mb-2 text-sarawak-brown">Culinary Traditions</h3>
-                <p className="text-gray-600 mb-4">Experience the diverse flavors and culinary heritage of Sarawak's ethnic communities.</p>
+                <h3 className="text-xl font-semibold mb-2 text-sarawak-brown">
+                  {translate('culinaryTraditions', 'Culinary Traditions')}
+                </h3>
+                <p className="text-gray-600 mb-4">
+                  {translate('culinaryDescription', 'Experience the diverse flavors and culinary heritage of Sarawak\'s ethnic communities.')}
+                </p>
                 <Link to="/articles">
                   <Button variant="outline" className="text-sarawak-red border-sarawak-red hover:bg-sarawak-red/10">
-                    Explore
+                    {translate('explore', 'Explore')}
                   </Button>
                 </Link>
               </CardContent>
@@ -116,14 +139,22 @@ const Index: React.FC = () => {
                   src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?q=80&w=2070&auto=format&fit=crop"
                   alt="Traditional music"
                   className="object-cover w-full h-full"
+                  onError={(e) => {
+                    console.error("Image failed to load");
+                    e.currentTarget.src = "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?q=80&w=1280";
+                  }}
                 />
               </div>
               <CardContent className="p-6">
-                <h3 className="text-xl font-semibold mb-2 text-sarawak-brown">Music & Festivals</h3>
-                <p className="text-gray-600 mb-4">Immerse yourself in the rhythms and celebrations that define Sarawak's cultural landscape.</p>
+                <h3 className="text-xl font-semibold mb-2 text-sarawak-brown">
+                  {translate('musicFestivals', 'Music & Festivals')}
+                </h3>
+                <p className="text-gray-600 mb-4">
+                  {translate('musicDescription', 'Immerse yourself in the rhythms and celebrations that define Sarawak\'s cultural landscape.')}
+                </p>
                 <Link to="/articles">
                   <Button variant="outline" className="text-sarawak-red border-sarawak-red hover:bg-sarawak-red/10">
-                    Explore
+                    {translate('explore', 'Explore')}
                   </Button>
                 </Link>
               </CardContent>
@@ -135,18 +166,20 @@ const Index: React.FC = () => {
       {/* Newsletter Section */}
       <section className="py-16 bg-sarawak-green text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">Stay Updated</h2>
+          <h2 className="text-3xl font-bold mb-4">
+            {translate('stayUpdated', 'Stay Updated')}
+          </h2>
           <p className="text-white/80 mb-8 max-w-2xl mx-auto">
-            Subscribe to our newsletter to receive updates on new articles, cultural events, and heritage preservation initiatives.
+            {translate('newsletterDescription', 'Subscribe to our newsletter to receive updates on new articles, cultural events, and heritage preservation initiatives.')}
           </p>
           <div className="max-w-md mx-auto flex flex-col sm:flex-row gap-2">
             <Input
               type="email"
-              placeholder="Your email address"
+              placeholder={translate('emailPlaceholder', 'Your email address')}
               className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
             />
             <Button className="bg-sarawak-yellow text-sarawak-brown hover:bg-sarawak-yellow/90">
-              Subscribe
+              {translate('subscribe', 'Subscribe')}
             </Button>
           </div>
         </div>
