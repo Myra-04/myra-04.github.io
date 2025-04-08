@@ -37,7 +37,11 @@ const AboutPage: React.FC = () => {
             <img 
               src="https://images.unsplash.com/photo-1585222183529-386e0b8097b9?q=80&w=2070&auto=format&fit=crop" 
               alt="Sarawak Cultural Village" 
-              className="rounded-lg w-full h-64 object-cover"
+              className="rounded-lg w-full h-auto object-cover shadow-lg"
+              onError={(e) => {
+                console.error("Image failed to load");
+                e.currentTarget.src = "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?q=80&w=1280";
+              }}
             />
             <p className="text-sm text-gray-500 mt-2 text-center">
               The Sarawak Cultural Village showcases the traditional architecture and lifestyle of ethnic groups in Sarawak.

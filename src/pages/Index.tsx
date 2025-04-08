@@ -26,15 +26,15 @@ const Index: React.FC = () => {
           className="absolute inset-0 bg-cover bg-center z-0" 
           style={{ 
             backgroundImage: "url('https://images.unsplash.com/photo-1628744448840-bedc0f9e0944?q=80&w=2070&auto=format&fit=crop')",
-            filter: "brightness(0.5)"
+            filter: "brightness(0.4)"
           }}
         />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
           <div className="max-w-xl">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 animate-fade-in">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 animate-fade-in drop-shadow-lg">
               {translations.welcomeMessage}
             </h1>
-            <p className="text-lg text-white/90 mb-8 animate-fade-in">
+            <p className="text-lg text-white mb-8 animate-fade-in drop-shadow-lg font-medium">
               {translations.exploreMessage}
             </p>
             <div className="space-x-4 animate-fade-in">

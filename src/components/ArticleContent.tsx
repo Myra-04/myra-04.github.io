@@ -87,7 +87,7 @@ const ArticleContent: React.FC<ArticleContentProps> = ({
     <div ref={articleRef} className="prose prose-lg max-w-none">
       {imageUrl && (
         <div className="mb-8 w-full">
-          <AspectRatio ratio={16/9} className="bg-gray-100 rounded-lg overflow-hidden">
+          <AspectRatio ratio={16/9} className="bg-gray-100 rounded-lg overflow-hidden shadow-md">
             <img 
               src={getImageUrl()} 
               alt="Article feature" 
