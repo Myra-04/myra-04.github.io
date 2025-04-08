@@ -19,16 +19,32 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, showProgress = true 
   
   // Get localized content
   const getLocalizedTitle = () => {
-    if (article.translations && article.translations[currentLanguage.code]?.title) {
-      return article.translations[currentLanguage.code].title;
+    if (article.translations && 
+        article.translations[currentLanguage.code] && 
+        typeof article.translations[currentLanguage.code] === 'object' &&
+        'title' in (article.translations[currentLanguage.code] as any)) {
+      return (article.translations[currentLanguage.code] as any).title;
     }
+    
+    if (article.titleTranslations && article.titleTranslations[currentLanguage.code]) {
+      return article.titleTranslations[currentLanguage.code];
+    }
+    
     return article.title;
   };
   
   const getLocalizedDescription = () => {
-    if (article.translations && article.translations[currentLanguage.code]?.shortDescription) {
-      return article.translations[currentLanguage.code].shortDescription;
+    if (article.translations && 
+        article.translations[currentLanguage.code] && 
+        typeof article.translations[currentLanguage.code] === 'object' &&
+        'shortDescription' in (article.translations[currentLanguage.code] as any)) {
+      return (article.translations[currentLanguage.code] as any).shortDescription;
     }
+    
+    if (article.descriptionTranslations && article.descriptionTranslations[currentLanguage.code]) {
+      return article.descriptionTranslations[currentLanguage.code];
+    }
+    
     return article.shortDescription;
   };
   
