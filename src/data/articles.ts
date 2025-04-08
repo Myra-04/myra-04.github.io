@@ -1,4 +1,3 @@
-
 export interface Article {
   id: string;
   title: string;
@@ -14,6 +13,7 @@ export interface Article {
     [langCode: string]: string; // Short description translations
   };
   imageUrl: string;
+  imageCredit?: string; // Added imageCredit field
   author: string;
   publishDate: string;
   category: string;
@@ -114,9 +114,37 @@ Corak yang ditenun ke dalam pua kumbu bukan sekadar hiasan tetapi sangat simboli
 4. **Figur manusia** yang menggambarkan nenek moyang atau wira budaya
 
 Setiap corak mempunyai nama dan makna tersendiri, dan penenun mahir secara tradisional dipercayai menerima reka bentuk ini dalam mimpi atau penglihatan.
+    `,
+      ib: `
+# Warisan Kaya Tekstil Tradisional Iban
+
+Orang Iban, salah satu kumpulan pribumi terbesar di Sarawak, terkenal dengan tekstil tradisional yang indah, terutamanya pua kumbu. Kain tenunan tangan ini bukan sekadar hiasan tetapi merupakan khazanah pengetahuan budaya, kepercayaan spiritual, dan ekspresi seni.
+
+## Seni Pua Kumbu
+
+Pua kumbu, yang bermaksud "selimut" dalam bahasa Iban, adalah tekstil tenunan tradisional yang dihasilkan oleh wanita Iban. Proses pembuatan pua kumbu memerlukan kerja keras dan kemahiran yang luar biasa. Sebelum tenunan dimulakan, benang kapas disediakan melalui beberapa proses termasuk pemintalan, mordanting, dan pewarnaan.
+
+Proses pewarnaan menggunakan bahan semula jadi yang terdapat di hutan hujan, seperti:
+- Akar engkudu (Morinda citrifolia) untuk warna merah
+- Daun tarum (Indigofera) untuk warna biru
+- Pelbagai kulit kayu dan daun untuk warna coklat dan hitam
+
+Pewarna semula jadi ini disediakan mengikut resepi kuno yang diwariskan turun-temurun oleh penenun.
+
+## Corak dan Motif Simbolik
+
+Corak yang ditenun ke dalam pua kumbu bukan sekadar hiasan tetapi sangat simbolik. Motif tradisional sering menggambarkan:
+
+1. **Makhluk mitos** seperti naga yang melambangkan kuasa supernatural
+2. **Flora dan fauna** dari hutan hujan Borneo
+3. **Simbol kosmos** yang mewakili alam semesta spiritual
+4. **Figur manusia** yang menggambarkan nenek moyang atau wira budaya
+
+Setiap corak mempunyai nama dan makna tersendiri, dan penenun mahir secara tradisional dipercayai menerima reka bentuk ini dalam mimpi atau penglihatan.
     `
     },
-    imageUrl: 'https://images.unsplash.com/photo-1585222515218-d2c9f8328bf6?q=80&w=2864&auto=format&fit=crop',
+    imageUrl: '/lovable-uploads/a2ac5418-190f-482f-ade0-366e7f7695c8.png',
+    imageCredit: 'Image Credit: dreamstime',
     author: 'Dr. Maria Langub',
     publishDate: '2023-05-15',
     category: 'Textiles',
@@ -279,7 +307,8 @@ Laksa Sarawak ti bansa dulu:
 Pemakanan tu meri jalai asa—bihun mit, daging ti manah, taugeh ti rangup, semua nya begulai dalam ai ti manah.
     `
     },
-    imageUrl: 'https://images.unsplash.com/photo-1583077874340-79db6564698e?q=80&w=2223&auto=format&fit=crop',
+    imageUrl: 'https://cdn.tasteatlas.com/images/dishes/b506087209e647eaa5d10795657bd32a.jpg',
+    imageCredit: 'Image Credit: tasteatlas.com',
     author: 'Chef Wong Mei Ling',
     publishDate: '2023-07-22',
     category: 'Food',

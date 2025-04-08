@@ -95,6 +95,7 @@ const ArticlePage: React.FC = () => {
           articleId={article.id} 
           content={article.content}
           imageUrl={article.imageUrl}
+          imageCredit={article.imageCredit}
           translations={article.translations}
           key={`article-${article.id}-${currentLanguage.code}`}
         />

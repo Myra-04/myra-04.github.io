@@ -9,6 +9,7 @@ interface ArticleContentProps {
   articleId: string;
   content: string;
   imageUrl?: string;
+  imageCredit?: string;
   translations?: Record<string, string | { title: string; shortDescription: string; content: string }>;
 }
 
@@ -16,6 +17,7 @@ const ArticleContent: React.FC<ArticleContentProps> = ({
   articleId, 
   content, 
   imageUrl,
+  imageCredit,
   translations 
 }) => {
   const { saveProgress } = useReadingProgress();
@@ -87,6 +89,11 @@ const ArticleContent: React.FC<ArticleContentProps> = ({
               }}
             />
           </AspectRatio>
+          {imageCredit && (
+            <div className="text-xs text-gray-500 mt-1 text-right">
+              {imageCredit}
+            </div>
+          )}
         </div>
       )}
       <div className="space-y-6 leading-relaxed">

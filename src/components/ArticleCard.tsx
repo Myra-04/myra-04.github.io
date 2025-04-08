@@ -68,6 +68,11 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, showProgress = true 
               </span>
             )}
           </div>
+          {article.imageCredit && (
+            <div className="text-xs text-gray-500 px-4 pt-2">
+              {article.imageCredit}
+            </div>
+          )}
         </Link>
       </CardHeader>
       <CardContent className="pt-4 pb-0 flex-grow">
