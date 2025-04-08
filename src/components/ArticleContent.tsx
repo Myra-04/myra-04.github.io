@@ -69,6 +69,15 @@ const ArticleContent: React.FC<ArticleContentProps> = ({
     };
   }, [articleId, saveProgress, lastSavedProgress]);
   
+  // Force the image to reload by clearing cache
+  const getImageUrl = () => {
+    if (imageUrl) {
+      // Add a cache-busting query parameter to force reload
+      return imageError ? getFallbackImage() : `${imageUrl}?t=${Date.now()}`;
+    }
+    return getFallbackImage();
+  };
+  
   // Get fallback image if the primary one fails
   const getFallbackImage = () => {
     return "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?q=80&w=1280";
@@ -80,7 +89,7 @@ const ArticleContent: React.FC<ArticleContentProps> = ({
         <div className="mb-8 w-full">
           <AspectRatio ratio={16/9} className="bg-gray-100 rounded-lg overflow-hidden">
             <img 
-              src={imageError ? getFallbackImage() : imageUrl} 
+              src={getImageUrl()} 
               alt="Article feature" 
               className="object-cover w-full h-full"
               onError={(e) => {
