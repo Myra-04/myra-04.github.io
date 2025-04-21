@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Article } from '@/data/articles';
+import { Article } from '@/data/articleData';
 import { useReadingProgress } from '@/contexts/ReadingProgressContext';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';

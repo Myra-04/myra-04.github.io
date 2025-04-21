@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '@/components/Layout';
@@ -7,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import ArticleCard from '@/components/ArticleCard';
-import { articles } from '@/data/articles';
+import { articles } from '@/data/articleData';
 
 const Index: React.FC = () => {
   const { translations, currentLanguage } = useLanguage();

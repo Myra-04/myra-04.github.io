@@ -1,10 +1,9 @@
-
 import React, { useState } from 'react';
 import Layout from '@/components/Layout';
 import ArticleCard from '@/components/ArticleCard';
 import { Input } from '@/components/ui/input';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { articles } from '@/data/articles';
+import { articles } from '@/data/articleData';
 import { Button } from '@/components/ui/button';
 import { Search } from 'lucide-react';
 

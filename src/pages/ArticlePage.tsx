@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Layout from '@/components/Layout';
@@ -6,7 +5,7 @@ import ArticleContent from '@/components/ArticleContent';
 import ReadingProgressIndicator from '@/components/ReadingProgressIndicator';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, Calendar, Clock, User, Tag } from 'lucide-react';
-import { getArticleById, getRelatedArticles } from '@/data/articles';
+import { getArticleById, getRelatedArticles } from '@/data/articleUtils';
 import ArticleCard from '@/components/ArticleCard';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useReadingProgress } from '@/contexts/ReadingProgressContext';
