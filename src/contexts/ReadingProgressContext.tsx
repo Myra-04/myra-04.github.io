@@ -23,7 +23,7 @@ export const ReadingProgressProvider: React.FC<{ children: React.ReactNode }> = 
   // Load reading progress from localStorage when the component mounts or user changes
   useEffect(() => {
     try {
-      const storageKey = user ? `sarawak-reading-progress-${user.id}` : 'sarawak-guest-reading-progress';
+      const storageKey = user ? `sarawak-reading-progress-${user.user_id}` : 'sarawak-guest-reading-progress';
       const storedProgress = localStorage.getItem(storageKey);
       
       if (storedProgress) {
@@ -39,7 +39,7 @@ export const ReadingProgressProvider: React.FC<{ children: React.ReactNode }> = 
   useEffect(() => {
     try {
       if (readingProgress.length > 0) {
-        const storageKey = user ? `sarawak-reading-progress-${user.id}` : 'sarawak-guest-reading-progress';
+        const storageKey = user ? `sarawak-reading-progress-${user.user_id}` : 'sarawak-guest-reading-progress';
         localStorage.setItem(storageKey, JSON.stringify(readingProgress));
         console.log('Saving reading progress to localStorage');
       }

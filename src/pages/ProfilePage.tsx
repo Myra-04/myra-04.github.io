@@ -30,10 +30,10 @@ const ProfilePage: React.FC = () => {
         <div className="bg-white rounded-lg shadow-md p-6 mb-8">
           <div className="flex items-center mb-6">
             <div className="w-16 h-16 bg-sarawak-green text-white rounded-full flex items-center justify-center text-2xl font-bold">
-              {user.name.charAt(0).toUpperCase()}
+              {user.full_name.charAt(0).toUpperCase()}
             </div>
             <div className="ml-4">
-              <h2 className="text-xl font-semibold">{user.name}</h2>
+              <h2 className="text-xl font-semibold">{user.full_name}</h2>
               <p className="text-gray-600">{user.email}</p>
             </div>
           </div>

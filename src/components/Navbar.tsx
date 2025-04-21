@@ -65,7 +65,7 @@ const Navbar = () => {
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" size="sm" className="flex items-center gap-1">
                     <User size={16} />
-                    <span>{user.name}</span>
+                    <span>{user.full_name}</span>
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
@@ -145,7 +145,7 @@ const Navbar = () => {
               {user ? (
                 <>
                   <div className="px-3 py-2 text-sarawak-brown">
-                    Logged in as <span className="font-medium">{user.name}</span>
+                    Logged in as <span className="font-medium">{user.full_name}</span>
                   </div>
                   <Link to="/profile" className="block px-3 py-2 text-sarawak-brown hover:text-sarawak-red" onClick={toggleMenu}>
                     My Profile
