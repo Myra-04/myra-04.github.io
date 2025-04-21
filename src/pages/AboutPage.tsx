@@ -48,6 +48,20 @@ const AboutPage: React.FC = () => {
             </p>
           </div>
           
+          <h2>Digital Literacy Initiative</h2>
+          <p>
+            Our platform now includes a Digital Literacy Initiative aimed at bridging the digital divide in Sarawak's 
+            communities. We offer online and offline training resources covering various aspects of digital skills, 
+            from basic computer usage to advanced digital marketing techniques targeted specifically for the needs 
+            of rural and urban communities in Sarawak.
+          </p>
+
+          <p>
+            Through our community issue reporting system, residents can highlight digital connectivity problems 
+            and other technological challenges they face. We work with local service providers to address these 
+            issues and improve digital access across the region.
+          </p>
+          
           <h2>Language Preservation</h2>
           <p>
             One of our key initiatives is the preservation and promotion of Sarawak's indigenous languages.
@@ -60,13 +74,13 @@ const AboutPage: React.FC = () => {
           <h2>Join Our Community</h2>
           <p>
             We invite you to explore the articles, stories, and resources on our platform. By creating an account,
-            you can track your reading progress, save favorite articles, and contribute to our growing community
-            of cultural enthusiasts, researchers, students, and curious minds.
+            you can track your reading progress, save favorite articles, access digital literacy training materials, 
+            and contribute to our growing community of cultural enthusiasts, researchers, students, and curious minds.
           </p>
           
           <p>
             Together, we can ensure that the rich cultural heritage of Sarawak continues to thrive and inspire
-            for generations to come.
+            for generations to come while empowering communities with essential digital skills for the modern world.
           </p>
         </div>
       </div>

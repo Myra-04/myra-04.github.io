@@ -1,12 +1,8 @@
 
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import { toast } from '@/components/ui/use-toast';
-
-interface User {
-  id: string;
-  name: string;
-  email: string;
-}
+import { mockDb } from '@/data/mockDatabase';
+import { User } from '@/types/database';
 
 interface AuthContextType {
   user: User | null;
@@ -24,27 +20,34 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     // Check if user is logged in from localStorage
-    const storedUser = localStorage.getItem('sarawak-user');
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
+    const storedUserId = localStorage.getItem('sarawak-user-id');
+    if (storedUserId) {
+      const userId = parseInt(storedUserId, 10);
+      const foundUser = mockDb.getUserById(userId);
+      if (foundUser) {
+        setUser(foundUser);
+      }
     }
     setLoading(false);
   }, []);
 
   const login = async (email: string, password: string) => {
     try {
-      // Mock login - in a real app this would call an API
-      const mockUser = {
-        id: '123',
-        name: email.split('@')[0],
-        email,
-      };
+      // Find user in our mock database
+      const foundUser = mockDb.getUserByEmail(email);
       
-      setUser(mockUser);
-      localStorage.setItem('sarawak-user', JSON.stringify(mockUser));
+      if (!foundUser) {
+        throw new Error('User not found');
+      }
+      
+      // In a real app, we would verify the password hash here
+      // For now, we'll just simulate a successful login
+      
+      setUser(foundUser);
+      localStorage.setItem('sarawak-user-id', foundUser.user_id.toString());
       toast({
         title: "Login successful",
-        description: `Welcome back, ${mockUser.name}!`,
+        description: `Welcome back, ${foundUser.full_name}!`,
       });
     } catch (error) {
       console.error('Login failed', error);
@@ -59,15 +62,29 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const signup = async (name: string, email: string, password: string) => {
     try {
-      // Mock signup - in a real app this would call an API
-      const mockUser = {
-        id: '123',
-        name,
-        email,
+      // Check if email already exists
+      const existingUser = mockDb.getUserByEmail(email);
+      if (existingUser) {
+        throw new Error('Email already in use');
+      }
+      
+      // In a real app, we would create a new user in the database
+      // For now, we'll create a mock user
+      const newUser: User = {
+        user_id: mockDb.getUsers().length + 1,
+        full_name: name,
+        email: email,
+        phone_number: '',
+        password_hash: 'hashed_' + password, // In a real app, we would hash the password
+        role: 'user',
+        location: 'Sarawak',
+        created_at: new Date().toISOString()
       };
       
-      setUser(mockUser);
-      localStorage.setItem('sarawak-user', JSON.stringify(mockUser));
+      // In a mock database, we can't actually add the user permanently
+      // But we can simulate a successful signup
+      setUser(newUser);
+      localStorage.setItem('sarawak-user-id', newUser.user_id.toString());
       toast({
         title: "Account created",
         description: `Welcome to Sarawak Heritage Connect, ${name}!`,
@@ -85,7 +102,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem('sarawak-user');
+    localStorage.removeItem('sarawak-user-id');
     toast({
       title: "Logged out",
       description: "You have been successfully logged out",
