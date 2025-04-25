@@ -157,7 +157,7 @@ Laksa Sarawak ti bansa dulu:
 Pemakanan tu meri jalai asa—bihun mit, daging ti manah, taugeh ti rangup, semua nya begulai dalam ai ti manah.
     `
     },
-    imageUrl: 'https://cdn.tasteatlas.com/images/dishes/b506087209e647eaa5d10795657bd32a.jpg',
+    imageUrl: 'https://cdn.tasteatlas.com/images/dishes/f4dfe298664b45fc9eb9a928663d5849.jpg?mw=2000',
     imageCredit: 'Image Credit: tasteatlas.com',
     author: 'Chef Wong Mei Ling',
     publishDate: '2023-07-22',
