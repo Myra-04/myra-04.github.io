@@ -1,5 +1,5 @@
 
-export type { Article } from './types';
+import { Article } from './types';
 import { textilesArticles } from './textiles';
 import { foodArticles } from './food';
 import { cultureArticles } from './culture';

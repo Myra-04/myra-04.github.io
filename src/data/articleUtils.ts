@@ -1,5 +1,6 @@
 
-import { articles, Article } from './articles';
+import { articles } from './articles/index';
+import type { Article } from './articles/types';
 
 // Gets a single article by id
 export const getArticleById = (id: string): Article | undefined => {

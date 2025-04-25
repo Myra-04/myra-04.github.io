@@ -1,2 +1,3 @@
 
-export { articles, Article } from './articles';
+export type { Article } from './articles/types';
+export { articles } from './articles/index';
