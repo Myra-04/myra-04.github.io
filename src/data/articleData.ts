@@ -143,8 +143,8 @@ Corak yang ditenun ke dalam pua kumbu bukan sekadar hiasan tetapi sangat simboli
 Setiap corak mempunyai nama dan makna tersendiri, dan penenun mahir secara tradisional dipercayai menerima reka bentuk ini dalam mimpi atau penglihatan.
     `
     },
-    imageUrl: '/lovable-uploads/a2ac5418-190f-482f-ade0-366e7f7695c8.png',
-    imageCredit: 'Image Credit: dreamstime',
+    imageUrl: '/lovable-uploads/ea3b4692-3a10-46a0-bd1a-25f397ca4d74.png',
+    imageCredit: 'Image credit: Traditional Pua Kumbu textile from Sarawak',
     author: 'Dr. Maria Langub',
     publishDate: '2023-05-15',
     category: 'Textiles',
