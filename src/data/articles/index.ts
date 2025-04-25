@@ -1,5 +1,5 @@
 
-import { Article } from './types';
+export type { Article } from './types';
 import { textilesArticles } from './textiles';
 import { foodArticles } from './food';
 import { cultureArticles } from './culture';
@@ -10,7 +10,4 @@ export const articles: Article[] = [
   ...cultureArticles
 ];
 
-export { Article } from './types';
-export { textilesArticles } from './textiles';
-export { foodArticles } from './food';
-export { cultureArticles } from './culture';
+export { textilesArticles, foodArticles, cultureArticles };

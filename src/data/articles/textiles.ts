@@ -118,8 +118,8 @@ Corak yang ditenun ke dalam pua kumbu bukan sekadar hiasan tetapi sangat simboli
 4. **Figur manusia** yang menggambarkan nenek moyang atau wira budaya
     `
     },
-    imageUrl: '/lovable-uploads/ea3b4692-3a10-46a0-bd1a-25f397ca4d74.png',
-    imageCredit: 'Image credit: Traditional Pua Kumbu textile from Sarawak',
+    imageUrl: 'https://i.pinimg.com/originals/f9/42/78/f94278172f70bdb47ce093a0d3ab564d.jpg',
+    imageCredit: 'Image of traditional Iban Pua Kumbu textile pattern',
     author: 'Dr. Maria Langub',
     publishDate: '2023-05-15',
     category: 'Textiles',
