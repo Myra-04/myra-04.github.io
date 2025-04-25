@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+
+import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import ArticleContent from '@/components/ArticleContent';
@@ -7,17 +8,22 @@ import { Button } from '@/components/ui/button';
 import { ChevronLeft, Calendar, Clock, User, Tag } from 'lucide-react';
 import { getArticleById, getRelatedArticles } from '@/data/articleUtils';
 import ArticleCard from '@/components/ArticleCard';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useLanguage, t } from '@/contexts/LanguageContext';
 import { useReadingProgress } from '@/contexts/ReadingProgressContext';
+import { getQuizByArticleId } from '@/data/quizData';
+import Quiz from '@/components/Quiz';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const ArticlePage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { getProgress } = useReadingProgress();
   const { currentLanguage } = useLanguage();
+  const [activeTab, setActiveTab] = useState<'content' | 'quiz'>('content');
   
   const article = id ? getArticleById(id) : undefined;
   const relatedArticles = article ? getRelatedArticles(article, 3) : [];
+  const quiz = id ? getQuizByArticleId(id) : undefined;
   
   useEffect(() => {
     if (!article) {
@@ -89,32 +95,72 @@ const ArticlePage: React.FC = () => {
           </div>
         </header>
         
-        {/* Article content */}
-        <ArticleContent 
-          articleId={article.id} 
-          content={article.content}
-          imageUrl={article.imageUrl}
-          imageCredit={article.imageCredit}
-          translations={article.translations}
-          key={`article-${article.id}-${currentLanguage.code}`}
-        />
-        
-        {/* Article tags */}
-        <div className="mt-8 flex flex-wrap gap-2">
-          {article.tags.map(tag => (
-            <span 
-              key={tag} 
-              className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-sarawak-yellow/20 text-sarawak-brown"
+        {/* Tabs for Content and Quiz */}
+        <Tabs defaultValue="content" className="mb-8">
+          <TabsList className="mb-6 flex">
+            <TabsTrigger 
+              value="content" 
+              className="flex-1"
+              onClick={() => setActiveTab('content')}
             >
-              <Tag size={12} className="mr-1" />
-              {tag}
-            </span>
-          ))}
-        </div>
+              {t('articles')}
+            </TabsTrigger>
+            {quiz && (
+              <TabsTrigger 
+                value="quiz" 
+                className="flex-1"
+                onClick={() => setActiveTab('quiz')}
+              >
+                {t('quiz')}
+              </TabsTrigger>
+            )}
+          </TabsList>
+          <TabsContent value="content" className="mt-0">
+            <ArticleContent 
+              articleId={article.id} 
+              content={article.content}
+              imageUrl={article.imageUrl}
+              imageCredit={article.imageCredit}
+              translations={article.translations}
+              key={`article-${article.id}-${currentLanguage.code}`}
+            />
+            
+            {/* Article tags */}
+            <div className="mt-8 flex flex-wrap gap-2">
+              {article.tags.map(tag => (
+                <span 
+                  key={tag} 
+                  className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-sarawak-yellow/20 text-sarawak-brown"
+                >
+                  <Tag size={12} className="mr-1" />
+                  {tag}
+                </span>
+              ))}
+            </div>
+            
+            {/* Quiz button */}
+            {quiz && (
+              <div className="mt-8 flex justify-center">
+                <Button 
+                  onClick={() => setActiveTab('quiz')}
+                  className="bg-sarawak-green hover:bg-sarawak-green/90"
+                >
+                  {t('startQuiz')}
+                </Button>
+              </div>
+            )}
+          </TabsContent>
+          
+          {quiz && (
+            <TabsContent value="quiz" className="mt-0">
+              <Quiz quiz={quiz} />
+            </TabsContent>
+          )}
+        </Tabs>
       </article>
       
       {/* Related articles */}
-      {relatedArticles.length > 0 && (
+      {relatedArticles.length > 0 && activeTab === 'content' && (
         <section className="bg-sarawak-cream/60 py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <h2 className="text-2xl font-bold text-sarawak-brown mb-6">Related Articles</h2>
