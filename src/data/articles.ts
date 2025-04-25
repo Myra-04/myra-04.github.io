@@ -1,7 +1,4 @@
 
-// This file is now just a compatibility re-export file for convenience while refactoring usage gradually.
-// It re-exports everything for backward compatibility. Eventually you may delete it!
-
-export { articles } from './articleData';
-export type { Article } from './articleData';
+// This file is now just a compatibility re-export file
+export { articles, Article } from './articles';
 export { getArticleById, getRelatedArticles } from './articleUtils';
